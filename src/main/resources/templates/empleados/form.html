@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Empleado</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${empleado.dni_empleado == null} ? 'Nuevo Empleado' : 'Editar Empleado'"></h1>
+        <form th:action="@{/empleados}" th:object="${empleado}" method="post">
+            <div class="form-group">
+                <label for="dni_empleado">DNI</label>
+                <input type="text" id="dni_empleado" name="dni_empleado" class="form-control" th:field="*{dni_empleado}" />
+            </div>
+            <div class="form-group">
+                <label for="nombreEmpleado">Nombre</label>
+                <input type="text" id="nombreEmpleado" name="nombreEmpleado" class="form-control" th:field="*{nombreEmpleado}" />
+            </div>
+            <div class="form-group">
+                <label for="apellidoEmpleado">Apellido</label>
+                <input type="text" id="apellidoEmpleado" name="apellidoEmpleado" class="form-control" th:field="*{apellidoEmpleado}" />
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control" th:field="*{fechaNacimiento}" />
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion" class="form-control" th:field="*{direccion}" />
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" name="correo" class="form-control" th:field="*{correo}" />
+            </div>
+            <div class="form-group">
+                <label for="area">Área</label>
+                <select id="area" name="area" class="form-control" th:field="*{area}">
+                    <option th:each="area : ${areas}" th:value="${area}" th:text="${area.nombreArea}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</body>
+</html>

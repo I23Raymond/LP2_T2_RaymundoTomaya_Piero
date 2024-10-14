@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Área</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 th:text="${area.area_id == null} ? 'Nueva Área' : 'Editar Área'"></h1>
+        <form th:action="@{/areas}" th:object="${area}" method="post">
+            <div class="form-group">
+                <label for="nombreArea">Nombre</label>
+                <input type="text" id="nombreArea" name="nombreArea" class="form-control" th:field="*{nombreArea}" required />
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+            <a th:href="@{/areas}" class="btn btn-secondary mt-3">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

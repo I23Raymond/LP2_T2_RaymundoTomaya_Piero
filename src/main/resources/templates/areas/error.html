@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="alert alert-danger" role="alert">
+            <h1 class="alert-heading">Error</h1>
+            <p th:text="${error}"></p>
+            <hr>
+            <a th:href="@{/areas}" class="btn btn-primary">Volver a la lista</a>
+        </div>
+    </div>
+</body>
+</html>

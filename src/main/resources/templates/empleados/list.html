@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Empleados</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Empleados</h1>
+        <a th:href="@{/empleados/new}" class="btn btn-primary">Nuevo Empleado</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Dirección</th>
+                    <th>Correo</th>
+                    <th>Área</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="empleado : ${empleados}">
+                    <td th:text="${empleado.dni_empleado}"></td>
+                    <td th:text="${empleado.nombreEmpleado}"></td>
+                    <td th:text="${empleado.apellidoEmpleado}"></td>
+                    <td th:text="${empleado.fechaNacimiento}"></td>
+                    <td th:text="${empleado.direccion}"></td>
+                    <td th:text="${empleado.correo}"></td>
+                    <td th:text="${empleado.area.nombreArea}"></td>
+                    <td>
+                        <a th:href="@{/empleados/edit/{dni}(dni=${empleado.dni_empleado})}" class="btn btn-warning">Editar</a>
+                        <a th:href="@{/empleados/delete/{dni}(dni=${empleado.dni_empleado})}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
